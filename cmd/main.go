@@ -40,7 +40,7 @@ func main() {
 			logrus.Fatal("Error in cmd main - ", err)
 		}
 	}()
-	logrus.Println("Project Shutting Down")
+	logrus.Println("Project is UP")
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGTERM, syscall.SIGINT)
 	<-quit
