@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Wardrobe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-brand">
+                    <span class="brand-icon">👗</span>
+                    <span class="brand-text">Wardrobe</span>
+                </div>
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to continue to your wardrobe</p>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-input"
+                        placeholder="Enter your username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-input"
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+                    <span class="btn-text">Sign In</span>
+                    <span class="btn-loader" style="display: none;"></span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p class="auth-footer-text">
+                    Don't have an account?
+                    <a href="/signup.html" class="auth-link">Sign up</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="auth-visual">
+            <div class="visual-decoration visual-decoration-1"></div>
+            <div class="visual-decoration visual-decoration-2"></div>
+            <div class="visual-decoration visual-decoration-3"></div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/pages/login.js"></script>
+</body>
+</html>
+

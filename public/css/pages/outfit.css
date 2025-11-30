@@ -1,0 +1,292 @@
+/* ===================================
+   Outfit Page Styles
+   =================================== */
+
+/* Generator Section */
+.generator-section {
+    margin-bottom: var(--spacing-3xl);
+    animation: slideDown 0.6s ease;
+}
+
+.generator-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-2xl);
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.generator-title {
+    font-size: var(--font-size-2xl);
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.generator-description {
+    color: var(--gray-600);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.generator-form {
+    /* Inherits from global form styles */
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--gray-200);
+    animation: slideDown 0.6s ease 0.1s both;
+}
+
+.tab-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--gray-600);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-bottom: -2px;
+}
+
+.tab-btn:hover {
+    color: var(--primary);
+}
+
+.tab-btn.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+}
+
+/* Outfits Grid */
+.outfits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-xl);
+    animation: fadeIn 0.6s ease 0.2s both;
+}
+
+.outfit-card {
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    cursor: pointer;
+    animation: slideUp 0.4s ease both;
+}
+
+.outfit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+}
+
+.outfit-header {
+    padding: var(--spacing-lg);
+    background: var(--gradient-primary);
+    color: var(--white);
+}
+
+.outfit-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.outfit-date {
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.outfit-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--gray-200);
+}
+
+.outfit-item {
+    position: relative;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    background: var(--gray-100);
+    overflow: hidden;
+}
+
+.outfit-item-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+}
+
+.outfit-card:hover .outfit-item-image {
+    transform: scale(1.05);
+}
+
+.outfit-item-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.outfit-item-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-sm);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: var(--white);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.outfit-footer {
+    padding: var(--spacing-lg);
+}
+
+.outfit-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.outfit-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    background: var(--gray-100);
+    color: var(--gray-700);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+}
+
+.outfit-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.outfit-action-btn {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.outfit-action-btn--view {
+    background: var(--gradient-primary);
+    color: var(--white);
+}
+
+.outfit-action-btn--view:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.outfit-action-btn--delete {
+    background: rgba(255, 139, 148, 0.1);
+    color: var(--danger);
+}
+
+.outfit-action-btn--delete:hover {
+    background: rgba(255, 139, 148, 0.2);
+}
+
+/* Outfit Details in Modal */
+.outfit-details-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.outfit-details-title {
+    font-size: var(--font-size-2xl);
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-sm);
+}
+
+.outfit-details-info {
+    color: var(--gray-600);
+    font-size: var(--font-size-sm);
+}
+
+.outfit-details-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+}
+
+.outfit-detail-item {
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.outfit-detail-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.outfit-detail-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.outfit-detail-name {
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--spacing-xs);
+}
+
+.outfit-detail-category {
+    font-size: var(--font-size-sm);
+    color: var(--gray-600);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .outfits-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .generator-card {
+        padding: var(--spacing-xl);
+    }
+
+    .outfit-details-items {
+        grid-template-columns: 1fr;
+    }
+}
+

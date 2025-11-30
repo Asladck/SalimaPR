@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Wardrobe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/pages/auth.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-brand">
+                    <span class="brand-icon">👗</span>
+                    <span class="brand-text">Wardrobe</span>
+                </div>
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Start organizing your wardrobe today</p>
+            </div>
+
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-input"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="form-label">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-input"
+                        placeholder="Choose a username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-input"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-input"
+                        placeholder="Create a password (min 6 characters)"
+                        required
+                        minlength="6"
+                    >
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="signupBtn">
+                    <span class="btn-text">Create Account</span>
+                    <span class="btn-loader" style="display: none;"></span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <p class="auth-footer-text">
+                    Already have an account?
+                    <a href="/login.html" class="auth-link">Sign in</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="auth-visual">
+            <div class="visual-decoration visual-decoration-1"></div>
+            <div class="visual-decoration visual-decoration-2"></div>
+            <div class="visual-decoration visual-decoration-3"></div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/pages/signup.js"></script>
+</body>
+</html>
+

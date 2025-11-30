@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wardrobe - Wardrobe</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/pages/wardrobe.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <span class="brand-icon">👗</span>
+                <span class="brand-text">Wardrobe</span>
+            </div>
+            <div class="nav-links">
+                <a href="/index.html" class="nav-link">Home</a>
+                <a href="/outfit.html" class="nav-link">Outfits</a>
+                <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="page-header-content">
+                <h1 class="page-title">My Closet</h1>
+                <p class="page-subtitle">Manage your wardrobe collection</p>
+            </div>
+            <button id="addClothesBtn" class="btn btn-primary">
+                <span>Add Item</span>
+                <span class="btn-icon">+</span>
+            </button>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters">
+            <select id="categoryFilter" class="filter-select">
+                <option value="">All Categories</option>
+                <option value="top">Tops</option>
+                <option value="bottom">Bottoms</option>
+                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option>
+                <option value="outerwear">Outerwear</option>
+            </select>
+            <select id="seasonFilter" class="filter-select">
+                <option value="">All Seasons</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+                <option value="autumn">Autumn</option>
+                <option value="winter">Winter</option>
+            </select>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state" style="display: none;">
+            <div class="loader"></div>
+            <p>Loading your wardrobe...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-icon">👕</div>
+            <h3 class="empty-title">Your wardrobe is empty</h3>
+            <p class="empty-text">Start by adding your first clothing item</p>
+            <button class="btn btn-primary" onclick="document.getElementById('addClothesBtn').click()">
+                Add Your First Item
+            </button>
+        </div>
+
+        <!-- Clothes Grid -->
+        <div id="clothesGrid" class="clothes-grid"></div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div id="clothesModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title">Add Clothing Item</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form id="clothesForm" class="modal-form">
+                <input type="hidden" id="clothesId" name="id">
+
+                <div class="form-group">
+                    <label for="clothesName" class="form-label">Name</label>
+                    <input
+                        type="text"
+                        id="clothesName"
+                        name="name"
+                        class="form-input"
+                        placeholder="e.g., Blue Denim Jacket"
+                        required
+                    >
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="category" class="form-input" required>
+                            <option value="">Select category</option>
+                            <option value="top">Top</option>
+                            <option value="bottom">Bottom</option>
+                            <option value="shoes">Shoes</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="outerwear">Outerwear</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="color" class="form-label">Color</label>
+                        <input
+                            type="text"
+                            id="color"
+                            name="color"
+                            class="form-input"
+                            placeholder="e.g., Blue"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="season" class="form-label">Season</label>
+                        <select id="season" name="season" class="form-input" required>
+                            <option value="">Select season</option>
+                            <option value="spring">Spring</option>
+                            <option value="summer">Summer</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="winter">Winter</option>
+                            <option value="all">All Seasons</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="material" class="form-label">Material</label>
+                        <input
+                            type="text"
+                            id="material"
+                            name="material"
+                            class="form-input"
+                            placeholder="e.g., Cotton"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="imageUrl" class="form-label">Image URL</label>
+                    <input
+                        type="url"
+                        id="imageUrl"
+                        name="image_url"
+                        class="form-input"
+                        placeholder="https://example.com/image.jpg"
+                        required
+                    >
+                    <small class="form-hint">Enter a direct link to an image of the item</small>
+                </div>
+
+                <div id="modalError" class="error-message" style="display: none;"></div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span class="btn-text">Save Item</span>
+                        <span class="btn-loader" style="display: none;"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">Delete Item</h2>
+                <button class="modal-close" id="closeDeleteModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this item? This action cannot be undone.</p>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="cancelDeleteBtn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">
+                    <span class="btn-text">Delete</span>
+                    <span class="btn-loader" style="display: none;"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/js/pages/wardrobe.js"></script>
+</body>
+</html>
+

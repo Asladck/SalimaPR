@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS clothes (
-                                       id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
 
     name TEXT NOT NULL,
